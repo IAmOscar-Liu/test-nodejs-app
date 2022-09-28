@@ -1,6 +1,9 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
+const { executeConnection } = require("./executeConnection");
 require("dotenv").config();
+
+const history = {};
 
 const app = express();
 
@@ -27,56 +30,37 @@ app.get("/api/mysql", async (req, res) => {
     const dbResultMap = {};
 
     await Promise.all([
-      executeConnection(connection, followContents, dbResultMap),
-      executeConnection(connection, followContents, dbResultMap),
-      executeConnection(connection, followContents, dbResultMap),
+      executeConnection(connection, followContents, dbResultMap, history),
+      executeConnection(connection, followContents, dbResultMap, history),
+      executeConnection(connection, followContents, dbResultMap, history),
     ]);
 
-    connection.destroy();
+    await connection.end();
 
+    // if history has more than 1000 items, delete the earliest items
+    if (Object.keys(history).length > 1000) {
+      // console.log("history over limit - ", history);
+
+      const keySortedByDate = Object.keys(history)
+        .map((key) => ({
+          key,
+          createdAt: history[key].createdAt,
+        }))
+        .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+        .map((el) => el.key);
+
+      const deletedKeys = keySortedByDate.slice(0, -1000);
+
+      for (let delKey of deletedKeys) {
+        delete history[delKey];
+      }
+      // console.log("history back to limit - ", history);
+    }
     res.json({ dbResultMap });
   } catch (e) {
+    console.log(e);
     res.status(500).json({ message: "Server error" });
   }
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
-
-async function executeConnection(connection, followContents, dbResultMap) {
-  while (followContents.length > 0) {
-    const followContent = followContents.shift();
-
-    const [rows] = await connection.execute(
-      `
-        SELECT tech_term FROM Terms 
-          WHERE CHAR_LENGTH(tech_term) >= 2 AND INSTR(?, tech_term) = 1
-          GROUP BY tech_term
-          ORDER BY CHAR_LENGTH(tech_term) DESC
-          LIMIT 1`,
-      [followContent]
-    );
-
-    dbResultMap[followContent] = rows[0]?.tech_term || null;
-  }
-}
-
-/*
-const connection = await mysql.createConnection({
-    user: "root",
-    password: "tipo100501203",
-    host: "143.198.179.88",
-    port: 3306,
-    database: "tipodb",
-  });
-
-
-  const [rows] = await connection.execute(
-    `
-    SELECT tech_term FROM Terms 
-      WHERE CHAR_LENGTH(tech_term) >= 2 AND INSTR(?, tech_term) = 1
-      GROUP BY tech_term
-      ORDER BY CHAR_LENGTH(tech_term) DESC
-      LIMIT 5`,
-    ["金屬絲之間的空隙，以及"]
-  )
-*/
