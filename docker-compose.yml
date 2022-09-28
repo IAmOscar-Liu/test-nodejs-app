@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  tipo-mysql-server:
+    build:
+      context: .
+    image: karta0989006/tipo-mysql-server
+    ports:
+      - 3000:3000
+    networks:
+      - mysql-tipo_default
+    # command: ["npm", "run", "dev"] 
+    command: ["npm", "start"]
+
+
+networks:
+  mysql-tipo_default:
+    external:
+      name: mysql-tipo_default
