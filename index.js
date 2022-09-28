@@ -63,4 +63,11 @@ app.get("/api/mysql", async (req, res) => {
   }
 });
 
+app.delete("/api/history", (_, res) => {
+  for (let key in history) {
+    delete history[key];
+  }
+  res.send({ message: "history has been deleted" });
+});
+
 app.listen(3000, () => console.log("Server running on port 3000"));
