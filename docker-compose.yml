@@ -3,6 +3,7 @@ services:
   tipo-mysql-server:
     build:
       context: .
+      network: mysql-tipo_default
     image: karta0989006/tipo-mysql-server
     ports:
       - 3000:3000
