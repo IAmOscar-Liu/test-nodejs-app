@@ -12,28 +12,32 @@ app.get("/api/mysql", async (req, res) => {
   const followContents = req.body.followContents;
 
   if (!Array.isArray(followContents)) {
-    return res.statusCode(400).json({ message: "Incorrect request data" });
+    return res.status(400).json({ message: "Incorrect request data" });
   }
 
-  const connection = await mysql.createConnection({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
-  });
+  try {
+    const connection = await mysql.createConnection({
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      database: process.env.DB_DATABASE,
+    });
 
-  const dbResultMap = {};
+    const dbResultMap = {};
 
-  await Promise.all([
-    executeConnection(connection, followContents, dbResultMap),
-    executeConnection(connection, followContents, dbResultMap),
-    executeConnection(connection, followContents, dbResultMap),
-  ]);
+    await Promise.all([
+      executeConnection(connection, followContents, dbResultMap),
+      executeConnection(connection, followContents, dbResultMap),
+      executeConnection(connection, followContents, dbResultMap),
+    ]);
 
-  connection.destroy();
+    connection.destroy();
 
-  res.json({ dbResultMap });
+    res.json({ dbResultMap });
+  } catch (e) {
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
