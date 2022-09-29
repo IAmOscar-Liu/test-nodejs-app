@@ -1,5 +1,5 @@
 const executeConnection = async (
-  connection,
+  promisePool,
   followContents,
   dbResultMap,
   history
@@ -7,13 +7,7 @@ const executeConnection = async (
   while (followContents.length > 0) {
     const followContent = followContents.shift();
 
-    if (history[followContent]) {
-      dbResultMap[followContent] = history[followContent].content;
-      // console.log("use history data - ", followContent);
-      continue;
-    }
-
-    const [rows] = await connection.execute(
+    const [rows] = await promisePool.execute(
       `
           SELECT tech_term FROM Terms 
             WHERE CHAR_LENGTH(tech_term) >= 2 AND INSTR(?, tech_term) = 1

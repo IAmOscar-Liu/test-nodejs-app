@@ -1,9 +1,19 @@
 const express = require("express");
-const mysql = require("mysql2/promise");
+const mysql = require("mysql2");
 const { executeConnection } = require("./executeConnection");
 require("dotenv").config();
 
 const history = {};
+
+const pool = mysql.createPool({
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
+});
+
+const promisePool = pool.promise();
 
 const app = express();
 
@@ -18,24 +28,26 @@ app.get("/api/mysql", async (req, res) => {
     return res.status(400).json({ message: "Incorrect request data" });
   }
 
+  const dbResultMap = {};
+
+  for (let i = followContents.length - 1; i >= 0; i--) {
+    if (history[followContents[i]]) {
+      dbResultMap[followContents[i]] = history[followContents[i]].content;
+      // console.log("use history data - ", followContents[i]);
+      followContents.splice(i, 1);
+    }
+  }
+
+  if (followContents.length === 0) {
+    return res.json({ dbResultMap });
+  }
+
   try {
-    const connection = await mysql.createConnection({
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      database: process.env.DB_DATABASE,
-    });
-
-    const dbResultMap = {};
-
     await Promise.all([
-      executeConnection(connection, followContents, dbResultMap, history),
-      executeConnection(connection, followContents, dbResultMap, history),
-      executeConnection(connection, followContents, dbResultMap, history),
+      executeConnection(promisePool, followContents, dbResultMap, history),
+      executeConnection(promisePool, followContents, dbResultMap, history),
+      executeConnection(promisePool, followContents, dbResultMap, history),
     ]);
-
-    await connection.end();
 
     // if history has more than 1000 items, delete the earliest items
     if (Object.keys(history).length > 1000) {
