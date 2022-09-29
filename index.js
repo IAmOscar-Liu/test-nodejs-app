@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const { executeConnection } = require("./executeConnection");
+const cors = require("cors");
 require("dotenv").config();
 
 const history = {};
@@ -17,11 +18,12 @@ const promisePool = pool.promise();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("<h1>Hello World</h1>"));
 
-app.get("/api/mysql", async (req, res) => {
+app.post("/api/mysql", async (req, res) => {
   const followContents = req.body.followContents;
 
   if (!Array.isArray(followContents)) {
