@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE utility-model-specification SYSTEM "utility-model-specification.dtd">
+<?xml-stylesheet type="text/xsl" href="utility-model-specification.xsl"?>
+<utility-model-specification lang="tw" receive-num="1102008438-0" receive-date=" " dtd-version="1.0.0" application-num="110201833" status="n" produced-by="applicant"><abstract lang="tw"><abstract-dtext><p id="_00001" general="n">本創作提供一種龍魚專用遙控型LED燈組，其包含的LED燈泡排列按照太陽光譜研發，可切換清晨光、中午光、午後光與傍晚光色，讓龍魚有如置身原河流域，誘發自身應該發色的DNA。
+</p>
+</abstract-dtext>
+</abstract>
+<abstract lang="en"><abstract-dtext><p id="_00002" general="n">This utility model provides a remotely controllable light emitting diode (LED) bank of lights for arowana, which contains LED bulbs arranged in accordance with the solar spectrum, and can switch the color of morning light, noon light, afternoon light and evening light, so that the arowana is like being in the original river basin and inducing DNA with its own color development.
+</p>
+</abstract-dtext>
+</abstract>
+<description><utility-model-title lang="tw">龍魚專用遙控型LED燈組
+</utility-model-title>
+<utility-model-title lang="en">REMOTELY CONTROLLABLE LIGHT EMITTING DIODE (LED) BANK OF LIGHTS FOR AROWANA
+</utility-model-title>
+<technical-field><p id="_00003" general="0001">本創作是有關於一種LED燈組，且特別有關於一種龍魚專用遙控型LED燈組，可調整明暗程度、光色，適合更多的緊湊型燈具，且可以用APP遙控。
+</p>
+</technical-field>
+<background-art><p id="_00004" general="0002">龍魚自身的發色速度和燈光的強弱是有很大聯繫的，光線越強、時間越持久龍魚的發色速度就會越快。長期的強光照射龍魚的鱗片框出現速度會提高，鰓蓋的發色面積也會逐漸的增大。在環境允許的條件下，龍魚的色澤也會加深，大自然的光是一種很神奇的東西，植物生物對光線都是有很強的依賴性，只有在光源充沛的環境下才提高生長速度和質量，龍魚也是一樣，尤其是龍魚的鱗片對光的感知是很特別的，無論是金龍還是紅龍，在打開相對應的光線之後表現出來的效果就會事半功倍，觀賞性也會大大地提高。
+</p>
+</background-art>
+<disclosure><p id="_00005" general="0003">本創作提供一種龍魚專用遙控型LED燈組，可調整明暗程度、光色，適合更多的緊湊型燈具，且可以用APP遙控。
+</p>
+<p id="_00006" general="0004">本創作提供一種龍魚專用遙控型LED燈組，可調整明暗程度、光色，適合更多的緊湊型燈具，且可以用APP遙控。
+</p>
+<p id="_00007" general="0005">本創作提供一種龍魚專用遙控型LED燈組，包括：一電磁濾波整流回路，用於取得外部交流電輸入電磁濾波整流回路11電磁濾波/整流回路連接外部輸入交流電；一PWM控制電路，用於對電流進行脈寬調變以將電流調變或改變為某種方波；一切換電路連接該電磁濾波整流回路與該PWM控制電路，用於提供切換所述LED燈組的多種不同顏色，至少包括清晨光、中午光、午後光與傍晚光色；一過負載保護電路，連接該PWM控制電路與該切換電路，用於輸出端對於過重負載(Over Loading)的過電流保護以電流限制方式將輸出電流限制在一定範圍，以達到電路保護的目的；一整流濾波電路，連接過該負載保護電路，用於將交流電源轉化為初級直流電；一檢測電路，連接該整流濾波電路，用於檢測電壓或電流是否發生異常；一過電流保護電路，連接該電磁濾波整流回路，用於避免電源轉換器輸出短路或超過額定電流值，輸出端的電流超過負荷，使電源轉換器內部元件受損；一第一PWM調光電路與一第二PWM調光電路，連接該電磁濾波整流回路、該檢測電路與該過電流保護電路，用於提供寬、窄不同的數位式脈衝，以改變輸出電流調節LED亮度；一RF接收模組，連接該第一PWM調光電路與該第二PWM調光電路，由發射器和接收器組成，用於接受遙控器或遠程式控制制；以及一降壓模組，連接該第一PWM調光電路與該第二PWM調光電路與該RF接收模組，用於利用二極體整流的降壓轉換器，運用
+在非絕緣降壓開關的DC/DC轉換器上，輸出電壓低於輸入電壓。
+</p>
+</disclosure>
+<description-of-drawings><description-of-element><p id="_00008" general="0026">11:電磁濾波整流回路
+</p>
+<p id="_00009" general="0027">12:切換電路
+</p>
+<p id="_00010" general="0028">13:過負載保護電路
+</p>
+<p id="_00011" general="0029">14:PWM控制電路
+</p>
+<p id="_00012" general="0030">15:整流濾波電路
+</p>
+<p id="_00013" general="0031">16:檢測電路
+</p>
+<p id="_00014" general="0032">17:過電流保護電路
+</p>
+<p id="_00015" general="0033">18、19:PWM調光電路
+</p>
+<p id="_00016" general="0034">20:RF接收模組
+</p>
+<p id="_00017" general="0035">12:降壓模組
+</p>
+</description-of-element>
+<p id="_00018" general="0006">第1圖是本創作的龍魚專用遙控型LED燈組的功能方塊圖。
+</p>
+<p id="_00019" general="0007">第2A圖是本創作的龍魚專用遙控型LED燈組的負載減額曲線圖。
+</p>
+<p id="_00020" general="0008">第2B圖是本創作的龍魚專用遙控型LED燈組的靜態特性曲線圖。
+</p>
+<p id="_00021" general="0009">第2C圖是本創作的龍魚專用遙控型LED燈組的功率因素特性圖。
+</p>
+<p id="_00022" general="0010">第2D圖是本創作的龍魚專用遙控型LED燈組的效率與負載圖。
+</p>
+</description-of-drawings>
+<mode-for-invention><p id="_00023" general="0011">請參閱第1圖，本創作提供一種龍魚專用遙控型LED燈組，其包含的LED燈泡排列按照太陽光譜研發，可切換清晨光、中午光、午後光與傍晚光色，讓龍魚有如置身原河流域，誘發自身應該發色的DNA。本創作的龍魚專用遙控型LED燈組可統一給金龍魚、藍龍魚、紅龍魚使用，光線設計切換時龍魚不驚嚇，還可以連結遙控器，以遙控方式調整明暗程度與光色。
+</p>
+<p id="_00024" general="0012">本創作的龍魚專用遙控型LED燈組包括電磁濾波整流回路11、脈衝寬度變調(Pulse Width Modulation，PWM)控制電路12、切換電
+路13、過負載保護電路13、整流濾波電路15、檢測電路16、過電流保護電路17、PWM調光電路18與19、RF接收模組20以及降壓模組21。
+</p>
+<p id="_00025" general="0013">電磁濾波整流回路11連接PWM控制電路12與切換電路13，當將該龍魚專用遙控型LED燈組插電後，外部交流電輸入電磁濾波整流回路11，使LED燈組可以直接與高電壓連接，高電壓經過降壓回路及濾波整流回路後變成低壓，可直接給LED燈組LED 1與LED 2提供電源。
+</p>
+<p id="_00026" general="0014">PWM控制電路12連接負載保護電路13與PWM控制電路14，用於對電流進行脈寬調變以將電流調變或改變為某種方波。
+</p>
+<p id="_00027" general="0015">切換電路13連接電磁濾波整流回路11、過負載保護電路13、PWM控制電路14、整流濾波電路15，用於提供主電源電路的切換開關器內串聯多個開關元件，用於切換中LED燈組的多種不同顏色，例如，切換清晨光、中午光、午後光與傍晚光色。
+</p>
+<p id="_00028" general="0016">過負載保護電路14連接PWM控制電路12與切換電路13，用於輸出端對於過重負載(Over Loading)的過電流保護以電流限制方式將輸出電流限制在一定範圍，以達到電路保護的目的。然而，當電路於長時間處於超過電流狀態時，產品可能會發生高溫或浪費一定範圍的能量，而造成電路損壞或浪費的能量。過電流保護主要分為兩種，一為快速閉鎖模式(Latch Off Mode)，另一則為自動復原模式(Auto Recover Mode)。
+</p>
+<p id="_00029" general="0017">整流濾波電路15連接過負載保護電路13與PWM調光電路18，用於將交流電源轉化為初級直流電。
+</p>
+<p id="_00030" general="0018">檢測電路16連接整流濾波電路15過電流保護電路17與PWM調光電路18，用於檢測電壓或電流是否發生異常。
+</p>
+<p id="_00031" general="0019">過電流保護電路17連接整流濾波電路15與PWM調光電路18，用於避免電源轉換器輸出短路或超過額定電流值，輸出端的電流超過負荷，使電源轉換器內部元件受損。
+</p>
+<p id="_00032" general="0020">PWM調光電路18、19連接整流濾波電路15、檢測電路16、過電流保護電路17、RF接收模組20以及降壓模組21，用於提供寬、窄不同的數位式脈衝，即可簡單地實現改變輸出電流，進而均勾、一致的調節LED亮度。
+</p>
+<p id="_00033" general="0021">LED調光方法的實現分為兩種：模擬調光和數字調光，其中模擬調光是通過改變LED回路中電流大小達到調光；數字調光又稱PWM調光，通過PWM波開啟和關閉LED來改變正向電流的導通時間以達到亮度調節的效果。模擬調光通過改變LED回路中的電流來調節LED的亮度。
+</p>
+<p id="_00034" general="0022">RF接收模組20連接PWM調光電路18與19，由發射器和接收器組成，用於接受遙控器或遠程式控制制。
+</p>
+<p id="_00035" general="0023">降壓模組21連接PWM調光電路18與RF接收模組20，用於利用二極體整流的降壓轉換器，可運用在非絕緣降壓開關的DC/DC轉換器上。DC/DC轉換上，常稱作二極體整流式和非同步式等。Buck電路，又稱降壓電路，其基本特徵是DC-DC轉換電路，輸出電壓低於輸入電壓。輸入電流為脈動的，輸出電流為連續的。
+</p>
+<p id="_00036" general="0024">第2A圖顯示本創作的龍魚專用遙控型LED燈組的負載減額曲線，第2B圖顯示本創作的龍魚專用遙控型LED燈組的靜態特性曲線，第2C圖顯示本創作的龍魚專用遙控型LED燈組的功率因素特性，第2D圖顯示本創作的龍魚專用遙控型LED燈組的效率與負載。
+</p>
+<p id="_00037" general="0025">本創作的龍魚專用遙控型LED燈組使用的驅動器為18W，適用於國際通用全範圍交流輸入的電壓，適合更多的緊湊型燈具。該驅動器的保護種類包括短路保護、過負載保護、過電流保護與空載保護。該驅動器的調光方式包括開關式與無線式，光線種類包括白光、黃光、暖白、暖白小夜燈，並以循環顯示。無線式的調光方式適用2.4G RF，有效距離大於50M，且還可以用APP控制。
+</p>
+</mode-for-invention>
+</description>
+<claims><claim dependency="dependent-claim"><claim-text>一種龍魚專用遙控型LED燈組，包括：
+<br></br></claim-text>
+<claim-text>一電磁濾波整流回路，用於取得外部交流電輸入電磁濾波整流回路電磁濾波/整流回路連接外部輸入交流電；
+<br></br></claim-text>
+<claim-text>一PWM控制電路，用於對電流進行脈寬調變以將電流調變或改變為某種方波；
+<br></br></claim-text>
+<claim-text>一切換電路連接該電磁濾波整流回路與該PWM控制電路，用於提供切換所述LED燈組的多種不同顏色，例如，切換清晨光、中午光、午後光與傍晚光色；
+<br></br></claim-text>
+<claim-text>一過負載保護電路，連接該PWM控制電路與該切換電路，用於輸出端對於過重負載(Over Loading)的過電流保護以電流限制方式將輸出電流限制在一定範圍，以達到電路保護的目的；
+<br></br></claim-text>
+<claim-text>一整流濾波電路，連接過該負載保護電路，用於將交流電源轉化為初級直流電；
+<br></br></claim-text>
+<claim-text>一檢測電路，連接該整流濾波電路，用於檢測電壓或電流是否發生異常；
+<br></br></claim-text>
+<claim-text>一過電流保護電路，連接該電磁濾波整流回路，用於避免電源轉換器輸出短路或超過額定電流值，輸出端的電流超過負荷，使電源轉換器內部元件受損；
+<br></br></claim-text>
+<claim-text>一第一PWM調光電路與一第二PWM調光電路，連接該電磁濾波整流回路、該檢測電路與該過電流保護電路，用於提供寬、窄不同的數位式脈衝，以改變輸出電流調節LED亮度；以及
+<br></br></claim-text>
+<claim-text>一RF接收模組，連接該第一PWM調光電路與該第二PWM調光電路，由發射器和接收器組成，用於接受遙控器或遠程式控制；以及
+<br></br></claim-text>
+<claim-text>一降壓模組，連接該第一PWM調光電路與該第二PWM調光電路與該RF接收模組，用於利用二極體整流的降壓轉換器，運用在非絕緣降壓開關的DC/DC轉換器上，輸出電壓低於輸入電壓。
+</claim-text>
+</claim>
+</claims>
+<figure-drawings lang="tw" figure-labels="圖1"></figure-drawings>
+<drawings lang="tw"><figure figure-labels="【圖1】" representative="T"><img id="i0001" he="1558" wi="2053" file="IMG-2/Draw/110201833-A0101-14-0001-1.TIF" alt="" img-content="drawing" img-format="tif" orientation="portrait" inline="no"/>
+</figure>
+<figure figure-labels="【圖2A】"><img id="i0002" he="1357" wi="1206" file="IMG-2/Draw/110201833-A0101-14-0002-2.TIF" alt="" img-content="drawing" img-format="tif" orientation="portrait" inline="no"/>
+</figure>
+<figure figure-labels="【圖2B】"><img id="i0003" he="1357" wi="1142" file="IMG-2/Draw/110201833-A0101-14-0002-3.TIF" alt="" img-content="drawing" img-format="tif" orientation="portrait" inline="no"/>
+</figure>
+<figure figure-labels="【圖2C】"><img id="i0004" he="1503" wi="2147" file="IMG-2/Draw/110201833-A0101-14-0003-4.TIF" alt="" img-content="drawing" img-format="tif" orientation="portrait" inline="no"/>
+</figure>
+<figure figure-labels="【圖2D】"><img id="i0005" he="1463" wi="2108" file="IMG-2/Draw/110201833-A0101-14-0004-5.TIF" alt="" img-content="drawing" img-format="tif" orientation="portrait" inline="no"/>
+</figure>
+</drawings>
+</utility-model-specification>
