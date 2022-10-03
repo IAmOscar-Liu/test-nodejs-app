@@ -21,7 +21,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("<h1>Hello World</h1>"));
+// app.get("/", (req, res) => res.send("<h1>Hello World</h1>"));
 
 app.post("/api/mysql", async (req, res) => {
   const followContents = req.body.followContents;
@@ -84,4 +84,17 @@ app.delete("/api/history", (_, res) => {
   res.send({ message: "history has been deleted" });
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.get("/api/history", (_, res) => {
+  res.send({ data: { num_of_items: Object.keys(history).length, history } });
+});
+
+// Handle production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static(__dirname + "/public/"));
+
+  // Handle SPA
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
+}
+
+app.listen(5000, () => console.log("Server running on port 5000"));
