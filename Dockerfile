@@ -1,16 +1,18 @@
 FROM node:16 AS BUILD_CLIENT
 
 WORKDIR /app
-
 COPY /react_client/package.json ./react_client/package.json 
 COPY /react_client/package-lock.json ./react_client/package-lock.json 
 
-RUN  -w /react_client npm install
+WORKDIR /app/react_client
+RUN  npm install
 
+WORKDIR /app
 COPY /react_client ./react_client
 
-RUN -w /react_client npm run build
-RUN -w /react_client rm -rf node_modules
+WORKDIR /app/react_client
+RUN npm run build
+RUN rm -rf node_modules
 
 FROM node:16 AS BUILD_SERVER
 
