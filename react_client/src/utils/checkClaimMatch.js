@@ -3,7 +3,7 @@ import { handleSpecialChar } from "./handleSpecialChar";
 import {
   checkItemInModeForInvention,
   checkPreviousClaimContent,
-  checkWrongElementInModeForInvention
+  checkWrongElementInModeForInvention,
 } from "./checkItemInModeForInvention";
 import { allSeperatedWords } from "../dict/allSeperatedWords";
 import { allFirstTimeSeparateWord, allUnitWords } from "../dict/allUnitWords";
@@ -13,7 +13,7 @@ import { getKeyInRange, getMapValues, isKeyInReserve } from "./otherUtils";
 import {
   limitedChar,
   getLimitedChar,
-  symetricPrefix
+  symetricPrefix,
 } from "../dict/allReferWords";
 import { allIgnoreMiddleWords } from "../dict/allIgnoreMiddleWords";
 import { restrictedLastWords, wordTable } from "../dict/restrictedLastWords";
@@ -60,7 +60,7 @@ export const checkClaimMatch = (
         ...a,
         mainElement.slice(0, ii) +
           "[\\u4E00-\\u9FFF]" +
-          mainElement.slice(ii + 1)
+          mainElement.slice(ii + 1),
       ],
       []
     )
@@ -69,21 +69,21 @@ export const checkClaimMatch = (
   // 如果(前述|該)) 又加了新東西，checkIllegalAttach filter 那邊也要改
   // 尋找所有的「該」
   let thisStartIndex = [
-    ...content.matchAll(RegExp(`(${allThisWords()})(${allUnitWords()})?`, "g"))
+    ...content.matchAll(RegExp(`(${allThisWords()})(${allUnitWords()})?`, "g")),
   ].map((match) => {
     if (match[2]) {
       return {
         realStart: match.index,
         matchStart: match.index + match[1].length + match[2].length,
         thisWord: match[1],
-        unitWord: match[2]
+        unitWord: match[2],
       };
     }
     return {
       realStart: match.index, //realStart: 「該/前述(複數個)」的位置
       matchStart: match.index + match[1].length, // matchStart:「該/前述(複數個)」下一個字的位置
       thisWord: match[1],
-      unitWord: ""
+      unitWord: "",
     };
   });
 
@@ -153,7 +153,7 @@ export const checkClaimMatch = (
 
     concatMatches = [
       ...concatMatches,
-      ...content.matchAll(concatMatchReg)
+      ...content.matchAll(concatMatchReg),
     ].sort((a, b) => a.index - b.index);
 
     // Test
@@ -171,7 +171,7 @@ export const checkClaimMatch = (
     );
     concatMatches = [
       ...concatMatches,
-      ...content.matchAll(concatSymMatchReg)
+      ...content.matchAll(concatSymMatchReg),
     ].sort((a, b) => a.index - b.index);
   }
 
@@ -182,7 +182,7 @@ export const checkClaimMatch = (
   if (manuallyAddValues.length > 0) {
     const manuallyAddedMatchReg = RegExp(
       `(${allThisWords()})(${allUnitWords()})?(${[
-        ...manuallyAddValues.map((v) => handleSpecialChar(v))
+        ...manuallyAddValues.map((v) => handleSpecialChar(v)),
       ]
         .sort((a, b) => b.length - a.length)
         .join("|")})`,
@@ -234,14 +234,14 @@ export const checkClaimMatch = (
           realStart: match.index, //「該/前述」的位置
           end: match.index + match[0].length,
           // pathIsOK: false,
-          isInDescriptionOfElementMap: true
+          isInDescriptionOfElementMap: true,
         };
       });
   }
 
   const matchReg = RegExp(
     `(${allThisWords()})(${allUnitWords()})?(${[
-      ...regExpsOrigin.map((reg) => handleSpecialChar(reg.value))
+      ...regExpsOrigin.map((reg) => handleSpecialChar(reg.value)),
     ]
       .sort((a, b) => b.length - a.length)
       .join("|")})`,
@@ -306,7 +306,7 @@ export const checkClaimMatch = (
         realStart: match.index, //「該/前述」的位置
         end: match.index + match[0].length,
         // pathIsOK: false,
-        isInDescriptionOfElementMap: true
+        isInDescriptionOfElementMap: true,
       };
     });
 
@@ -356,7 +356,7 @@ export const checkClaimMatch = (
               ...match[9]
                 .replaceAll(/[()]/g, "")
                 .split(/[、,]/)
-                .filter((e) => e !== "")
+                .filter((e) => e !== ""),
             ]
           : [""];
       // if (/.+[~-].+/.test(keys[0])) {
@@ -393,7 +393,7 @@ export const checkClaimMatch = (
         value,
         items,
         keys,
-        keyBeenModified
+        keyBeenModified,
       });
     });
 
@@ -489,7 +489,7 @@ export const checkClaimMatch = (
     // console.log(itemRegExp);
     // debugger;
 
-    let followContent = content.substring(i, maxEnd);
+    let followContent = content.substring(i, maxEnd).split("@##@")[0];
     let followContentFirstCharNoCheck = false;
 
     if (shiftFollowContent(content[i - 1], followContent)) {
@@ -500,7 +500,7 @@ export const checkClaimMatch = (
 
     const itemRegExp = RegExp(
       `^[^${getLimitedChar()}]{1,3}?(${[
-        ...regExpsOrigin.map((reg) => handleSpecialChar(reg.value))
+        ...regExpsOrigin.map((reg) => handleSpecialChar(reg.value)),
       ]
         .sort((a, b) => b.length - a.length)
         .join("|")})`
@@ -557,7 +557,7 @@ export const checkClaimMatch = (
         // pathIsOK: false,
         realStart,
         // isInDescriptionOfElementMap: doubleModifiedItem ? true : false
-        isInDescriptionOfElementMap: true
+        isInDescriptionOfElementMap: true,
       });
 
       // debugger;
@@ -595,7 +595,7 @@ export const checkClaimMatch = (
         // pathIsOK: false,
         realStart,
         // isInDescriptionOfElementMap: doubleModifiedItem ? true : false
-        isInDescriptionOfElementMap: true
+        isInDescriptionOfElementMap: true,
       });
 
       return;
@@ -708,7 +708,7 @@ export const checkClaimMatch = (
     } else if (
       [
         claim.mainElement,
-        ...claim.matchedClaimsNum.map((n) => claims[n - 1].mainElement)
+        ...claim.matchedClaimsNum.map((n) => claims[n - 1].mainElement),
       ]
         // .map((mainElement) => mainElement.split(/[^\u4E00-\u9FFF]/)[0])
         .map((mainElement) => mainElement.split(/[\\(\\)]/)[0])
@@ -723,7 +723,7 @@ export const checkClaimMatch = (
       // it means it's part of mainElement
       item = finalItem = [
         claim.mainElement,
-        ...claim.matchedClaimsNum.map((n) => claims[n - 1].mainElement)
+        ...claim.matchedClaimsNum.map((n) => claims[n - 1].mainElement),
       ]
         // .map((mainElement) => mainElement.split(/[^\u4E00-\u9FFF]/)[0])
         .map((mainElement) => mainElement.split(/[\\(\\)]/)[0])
@@ -1171,7 +1171,7 @@ else if (
       // isInDescriptionOfElementMap: doubleModifiedItem ? true : false
       isInDescriptionOfElementMap: false,
       shouldLookupDB,
-      followContent
+      followContent,
     });
   }); // each 剩下的「該」後面接沒有在符號說明的元件
 
@@ -1244,7 +1244,7 @@ else if (
           keyStart,
           keyEnd,
           keyBeenModified: match.keyBeenModified,
-          hasOuterKey: key ? true : false
+          hasOuterKey: key ? true : false,
         });
       });
     } else {
@@ -1268,7 +1268,7 @@ else if (
             ? match.keyStart + firstIndex
             : null,
         keyEnd:
-          match.keyEnd && match.keyEnd >= 0 ? match.keyEnd + firstIndex : null
+          match.keyEnd && match.keyEnd >= 0 ? match.keyEnd + firstIndex : null,
       };
     })
     .filter(
