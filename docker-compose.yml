@@ -3,10 +3,11 @@ services:
   tipo-mysql-server:
     build:
       context: .
+      target: BUILD_SERVER
       network: mysql-tipo_default
     image: karta0989006/tipo-mysql-server
     ports:
-      - 3000:3000
+      - 5000:5000
     networks:
       - mysql-tipo_default
     # command: ["npm", "run", "dev"] 
