@@ -35,6 +35,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 COPY --from=BUILD_CLIENT /app/public ./public
+RUN rm -rf react_client
 
 EXPOSE 5000
 CMD [ "node", "index.js" ]
