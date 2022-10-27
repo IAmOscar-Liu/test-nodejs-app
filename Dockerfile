@@ -2,9 +2,7 @@ FROM node:16 AS BUILD_CLIENT
 
 WORKDIR /app
 RUN git clone -b version_2022_10_27 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git client
-RUN cp react_client/.env ./client/
-COPY /client/package.json ./client/package.json 
-COPY /client/package-lock.json ./client/package-lock.json 
+COPY /react_client/.env ./client
 
 WORKDIR /app/client
 RUN npm install
