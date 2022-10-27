@@ -1,0 +1,1 @@
+git clone -b version_2022_10_27 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git .

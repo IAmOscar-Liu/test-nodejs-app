@@ -1,6 +1,7 @@
 FROM node:16 AS BUILD_CLIENT
 
 WORKDIR /app
+RUN git clone -b version_2022_10_27 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git react_client
 COPY /react_client/package.json ./react_client/package.json 
 COPY /react_client/package-lock.json ./react_client/package-lock.json 
 
@@ -31,7 +32,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-COPY --from=BUILD_CLIENT /app/public ./public
+COPY --from=BUILD_CLIENT /app/react_client/build ./public
 RUN rm -rf react_client
 
 EXPOSE 5000
