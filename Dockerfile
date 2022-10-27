@@ -1,17 +1,18 @@
 FROM node:16 AS BUILD_CLIENT
 
 WORKDIR /app
-RUN git clone -b version_2022_10_27 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git react_client
-COPY /react_client/package.json ./react_client/package.json 
-COPY /react_client/package-lock.json ./react_client/package-lock.json 
+RUN git clone -b version_2022_10_27 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git client
+RUN cp react_client/.env ./client/
+COPY /client/package.json ./client/package.json 
+COPY /client/package-lock.json ./client/package-lock.json 
 
-WORKDIR /app/react_client
-RUN  npm install
+WORKDIR /app/client
+RUN npm install
 
 WORKDIR /app
-COPY /react_client ./react_client
+COPY /client ./client
 
-WORKDIR /app/react_client
+WORKDIR /app/client
 RUN npm run build
 RUN rm -rf node_modules
 
@@ -32,8 +33,8 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-COPY --from=BUILD_CLIENT /app/react_client/build ./public
-RUN rm -rf react_client
+COPY --from=BUILD_CLIENT /app/client/build ./public
+RUN rm -rf client
 
 EXPOSE 5000
 CMD [ "node", "index.js" ]
