@@ -6,11 +6,6 @@ COPY /react_client/.env ./client
 
 WORKDIR /app/client
 RUN npm install
-
-WORKDIR /app
-COPY /client ./client
-
-WORKDIR /app/client
 RUN npm run build
 RUN rm -rf node_modules
 
