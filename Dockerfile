@@ -1,7 +1,8 @@
 FROM node:16 AS BUILD_CLIENT
 
 WORKDIR /app
-RUN git clone -b version_2023_06_25 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git client
+# RUN git clone -b version_2023_06_25 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git client
+RUN git clone -b version_2023_08_30 https://github.com/IAmOscar-Liu/automatic-patent-examiner.git client
 COPY /client/.env ./client
 
 WORKDIR /app/client
